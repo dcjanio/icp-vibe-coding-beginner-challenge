@@ -1,0 +1,16 @@
+{
+  "canisters": {
+    "hello_icp": {
+      "candid": "src/hello_icp/hello_icp.did",
+      "package": "hello_icp",
+      "type": "rust"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "version": 1
+} 
