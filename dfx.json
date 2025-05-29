@@ -1,0 +1,9 @@
+{
+  "canisters": {
+    "hello_icp": {
+      "candid": "hello_icp.did",
+      "package": "hello_icp",
+      "type": "rust"
+    }
+  }
+} 
