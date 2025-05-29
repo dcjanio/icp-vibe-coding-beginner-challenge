@@ -78,9 +78,7 @@ path = "modules/module5-collections/exercises/final_challenge/starter_code.rs"
 name = "module6_01"
 path = "modules/module6-advanced-concepts/exercises/01_trait_workshop_starter.rs"
 
-[[bin]]
-name = "module7_01"
-path = "modules/module7-icp-integration/exercises/01_hello_icp_starter.rs"
+# Note: module7_01 is excluded because ICP dependencies are handled separately in the ICP exercises directory
 
 [workspace]
 members = []

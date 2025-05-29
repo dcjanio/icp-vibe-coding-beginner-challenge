@@ -1,0 +1,5 @@
+service : {
+    "get_greeting": () -> (text) query;
+    "update_greeting": (text) -> (text);
+    "get_greeting_history": () -> (vec text) query;
+} 

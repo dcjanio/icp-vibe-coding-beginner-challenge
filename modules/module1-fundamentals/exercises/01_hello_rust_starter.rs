@@ -1,13 +1,14 @@
 use std::io;
+use chrono::Local;
 
 fn main() {
-    // TODO: 1. Prompt the user for their name
-
-    // TODO: 2. Read the user's input
+    println!("Please enter your name:");
     let mut name = String::new();
-
-    // TODO: 3. Print a personalized greeting
-
-    // BONUS: Print the current date
-    // Hint: You can use the chrono crate for this
+    io::stdin()
+        .read_line(&mut name)
+        .expect("Failed to read line");
+    let name = name.trim();
+    println!("Hello, {}! Welcome to Rust programming!", name);
+    let current_date = Local::now();
+    println!("Today's date is: {}", current_date.format("%Y-%m-%d"));
 }

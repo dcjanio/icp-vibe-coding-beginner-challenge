@@ -109,9 +109,9 @@ enum ValidationError {
 impl fmt::Display for ValidationError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            ValidationError::InvalidId => write!(f, /* TODO */),
-            ValidationError::NameTooShort => write!(f, /* TODO */),
-            ValidationError::InvalidAge => write!(f, /* TODO */),
+            ValidationError::InvalidId => write!(f, "User ID cannot be zero"),
+            ValidationError::NameTooShort => write!(f, "Name too short, minimum length is 2 characters"),
+            ValidationError::InvalidAge => write!(f, "Age must be at least 18"),
         }
     }
 }
@@ -120,15 +120,15 @@ impl fmt::Display for ValidationError {
 fn validate_user(user: &User) -> Result<(), ValidationError> {
     // Check ID validity
     if user.id == 0 {
-        return /* TODO */;
+        return Err(ValidationError::InvalidId);
     }
     
     if user.name.len() < 2 {
-        return /* TODO */;
+        return Err(ValidationError::NameTooShort);
     }
     
     if user.age < 18 {
-        return /* TODO */;
+        return Err(ValidationError::InvalidAge);
     }
     
     Ok(())

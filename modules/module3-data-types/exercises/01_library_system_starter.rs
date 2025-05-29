@@ -1,43 +1,95 @@
 // Define the Book struct
+#[derive(Debug)]
 struct Book {
-    // TODO: Add fields for book properties (title, author, year, isbn)
+    title: String,
+    author: String,
+    year: u32,
+    isbn: String,
+}
+
+impl Book {
+    fn new(title: &str, author: &str, year: u32, isbn: &str) -> Self {
+        Book {
+            title: title.to_string(),
+            author: author.to_string(),
+            year,
+            isbn: isbn.to_string(),
+        }
+    }
 }
 
 // Define a BookStatus enum to track availability
 enum BookStatus {
-    // TODO: Add variants for different states (Available, Borrowed)
+    Available,
+    Borrowed,
 }
 
 // Define a Library struct to manage books
 struct Library {
-    // TODO: Add fields to store books and their status
+    books: Vec<(Book, BookStatus)>,
 }
 
-// TODO: Implement methods for the Library struct
+// Implement methods for the Library struct
 impl Library {
     // Create a new, empty library
     fn new() -> Library {
-        // TODO: Implement this function
+        Library {
+            books: Vec::new(),
+        }
     }
 
     // Add a book to the library
     fn add_book(&mut self, book: Book) {
-        // TODO: Implement this function
+        self.books.push((book, BookStatus::Available));
     }
 
     // Borrow a book from the library
     fn borrow_book(&mut self, isbn: &str) -> Result<&Book, &str> {
-        // TODO: Implement this function
+        for (book, status) in &mut self.books {
+            if book.isbn == isbn {
+                match status {
+                    BookStatus::Available => {
+                        *status = BookStatus::Borrowed;
+                        return Ok(book);
+                    }
+                    BookStatus::Borrowed => {
+                        return Err("Book is already borrowed");
+                    }
+                }
+            }
+        }
+        Err("Book not found")
     }
 
     // Return a borrowed book to the library
     fn return_book(&mut self, isbn: &str) -> Result<&Book, &str> {
-        // TODO: Implement this function
+        for (book, status) in &mut self.books {
+            if book.isbn == isbn {
+                match status {
+                    BookStatus::Borrowed => {
+                        *status = BookStatus::Available;
+                        return Ok(book);
+                    }
+                    BookStatus::Available => {
+                        return Err("Book is not borrowed");
+                    }
+                }
+            }
+        }
+        Err("Book not found")
     }
 
     // List all books in the library with their status
     fn list_books(&self) {
-        // TODO: Implement this function
+        println!("Library Book Inventory:");
+        for (book, status) in &self.books {
+            let status_str = match status {
+                BookStatus::Available => "Available",
+                BookStatus::Borrowed => "Borrowed",
+            };
+            println!("\"{}\" by {} ({}) - {}", book.title, book.author, book.year, status_str);
+        }
+        println!();
     }
 }
 

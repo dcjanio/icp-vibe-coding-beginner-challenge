@@ -49,10 +49,10 @@ fn main() {
 
 ## How to Run Your Code
 
-1. First, modify the starter code in `01_library_system_starter.rs` according to the requirements
+1. First, modify the starter code in `01_collection_manipulation_starter.rs` according to the requirements
 2. Run your code from the bootcamp root directory with:
    ```
-   cargo run --bin module3_01
+   cargo run --bin module5_01
    ```
 
 ## Expected Output
